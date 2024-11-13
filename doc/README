@@ -1,0 +1,21 @@
+# Automação de Pipeline com Docker e GitHub Actions
+
+Este projeto configura o pipeline de CI/CD para uma aplicação web moderna composta por três componentes principais: Front-End (React), Back-End (Node.js/Express) e Banco de Dados (PostgreSQL). Cada componente foi empacotado como uma imagem Docker independente, garantindo a modularidade e escalabilidade do ambiente.
+
+## Estrutura
+
+1. **Dockerfiles**:
+   - **Front-End**: Configurado para compilar e rodar uma aplicação React na porta 3000.
+   - **Back-End**: Configurado para rodar um servidor Node.js na porta 5000.
+   - **Banco de Dados**: Utiliza uma imagem PostgreSQL com variáveis de ambiente configuradas.
+
+2. **GitHub Actions**:
+   - **Build and Test Workflow**: Automatiza o build e a execução de testes para os três componentes sempre que houver alterações na branch `main`.
+   - **Deploy Workflow**: Publica as imagens Docker no Docker Hub e simula um deploy automático para o ambiente de produção.
+
+## Execução
+1. Configure suas credenciais do Docker Hub no GitHub Secrets (`DOCKER_USERNAME` e `DOCKER_PASSWORD`).
+2. Garanta que os arquivos `Dockerfile` e os workflows estejam devidamente configurados no repositório.
+3. O build e os testes serão acionados em push ou pull request na branch `main`, enquanto o deploy será acionado em tags que seguem o padrão `v*`.
+
+Este pipeline oferece automação completa para desenvolvimento, testes e entrega contínua, garantindo maior eficiência e confiabilidade no ciclo de vida da aplicação.

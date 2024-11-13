@@ -1,0 +1,13 @@
+# Imagem base
+FROM postgres:13
+
+# Configurar variáveis de ambiente para banco de dados
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=password
+ENV POSTGRES_DB=mydatabase
+
+# Expor a porta do banco de dados
+EXPOSE 5432
+
+# Copiar arquivos de inicialização, se necessário
+# COPY init.sql /docker-entrypoint-initdb.d/

@@ -1,0 +1,43 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image for Front-End
+        run: docker build -t frontend:latest -f Dockerfile-frontend .
+
+      - name: Test Front-End
+        run: echo "Run front-end tests here"
+
+  build-and-test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image for Back-End
+        run: docker build -t backend:latest -f Dockerfile-backend .
+
+      - name: Test Back-End
+        run: echo "Run back-end tests here"
+
+  build-and-test-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image for Database
+        run: docker build -t database:latest -f Dockerfile-database .
